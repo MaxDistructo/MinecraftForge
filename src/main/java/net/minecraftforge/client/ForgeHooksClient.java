@@ -276,7 +276,7 @@ public class ForgeHooksClient
             for (int z = -distance; z <= distance; ++z)
             {
                 BlockPos pos = center.add(x, 0, z);
-                Biome biome = world.getBiomeGenForCoords(pos);
+                Biome biome = world.getBiome(pos);
                 int colour = biome.getSkyColorByTemp(biome.getFloatTemperature(pos));
                 r += (colour & 0xFF0000) >> 16;
                 g += (colour & 0x00FF00) >> 8;
@@ -288,7 +288,7 @@ public class ForgeHooksClient
         int multiplier = (r / divider & 255) << 16 | (g / divider & 255) << 8 | b / divider & 255;
 
         skyX = center.getX();
-        skyZ = center.getY();
+        skyZ = center.getZ();
         skyRGBMultiplier = multiplier;
         return skyRGBMultiplier;
     }
